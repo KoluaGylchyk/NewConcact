@@ -8,6 +8,7 @@ const App = () => {
   const [allContacts, setAllContacts] = useState([
     { name: "MyPhone", phoneNumber: "+380635063724", id: `${Math.random()}`.split('.')[1] },
     { name: "Bohdan", phoneNumber: "+380635063724", id: `${Math.random()}`.split('.')[1] },
+    { name: "Bohdan2", phoneNumber: "+3806350637242", id: `${Math.random()}`.split('.')[1] },
   ]);
   return (
     <div>
