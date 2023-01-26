@@ -23,7 +23,7 @@ const App = () => {
       <Routes>
        <Route index element={<Home allContacts={allContacts} setAllContacts={setAllContacts} />}/>
        <Route path="/AddNewContact" element={<AddNewContact allContacts={allContacts} setAllContacts={setAllContacts}/>}/>
-       <Route  path="/Contact/:id" element={<Contact allContacts={allContacts}/>}/>
+       <Route  path="/Contact/:id" element={<Contact allContacts={allContacts}setAllContacts={setAllContacts} />}/>
       </Routes>
       
     </div>
