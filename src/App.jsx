@@ -11,10 +11,10 @@ const App = () => {
   ]);
   return (
     <div>
-      <div>
-        <nav>
-          <ul>
-            <li><Link to="/AddNewContact">AddNewContact</Link></li>
+      <div >
+        <nav className="flex item-end h-full" >
+          <ul className="">
+            <li ><Link to="/AddNewContact">AddNewContact</Link></li>
             <li><Link to="/">Home</Link></li>
           </ul>
         </nav>

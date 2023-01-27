@@ -13,12 +13,20 @@ const Contact = ({ allContacts, setAllContacts }) => {
   });
 
   useEffect(() => {
+    console.log("+");
     const NewContactItem = allContacts.find((item) => item.id == params.id);
     setNewContact(NewContactItem);
   }, []);
 
   const handleToggleModal = () => {
-    setIsOpen((prev) => !prev);
+    setIsOpen(true);
+    setInputValues({
+      inputNameValue: "",
+      inputPhoneValue: "",
+    });
+  };
+  const handleCloseModal = () => {
+    setIsOpen(false);
   };
 
   const handleOnChange = (e) => {
@@ -29,21 +37,20 @@ const Contact = ({ allContacts, setAllContacts }) => {
 
   const handleSaveContact = (e) => {
     e.preventDefault();
-    
+
     setAllContacts((prev) => {
-      const newContacts = [...prev].map((con,item) => {
-        
-        if (con.id == item.id) {
+      const newContacts = [...prev].map((con) => {
+        if (con.id == newContact?.id) {
           con.name = inputValues.inputNameValue;
           con.phoneNumber = inputValues.inputPhoneValue;
         }
-        
         return con;
       });
       return newContacts;
     });
-  }
-  
+    handleCloseModal();
+  };
+
   return (
     <div>
       <div className="flex p-3">
@@ -57,6 +64,12 @@ const Contact = ({ allContacts, setAllContacts }) => {
       {isOpen ? (
         <Modal isOpen={isOpen} setIsOpen={handleToggleModal}>
           <div>
+            <button
+              className="border-2 p-2 border-yellow-100 rounded-lg shadow-lg"
+              onClick={handleCloseModal}
+            >
+              Close
+            </button>
             <h3>Edit Contact</h3>
             <form onSubmit={handleSaveContact}>
               <div>
@@ -75,7 +88,7 @@ const Contact = ({ allContacts, setAllContacts }) => {
                 <input
                   type="text"
                   id="editInputNumber"
-                  name="inputNumberValue"
+                  name="inputPhoneValue"
                   value={inputValues.inputPhoneValue}
                   onChange={handleOnChange}
                 />
