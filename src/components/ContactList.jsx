@@ -1,14 +1,16 @@
-import React from 'react'
-import ContactItem from './ContactItem'
+import React from "react";
+import ContactItem from "./ContactItem";
 
-const ContactList = ({allContacts, setAllContacts}) => {
+const ContactList = ({ allContacts, setAllContacts }) => {
   return (
-	 <div className='w-full'>
-		{allContacts.map((item)=>(
-			<ContactItem item={item} key={item.id} allContacts={allContacts} />
-		))}
-	 </div>
-  )
-}
+    <div className="w-full">
+      {allContacts.length
+        ? allContacts.map((item) => (
+            <ContactItem item={item} key={item.id} allContacts={allContacts} />
+          ))
+        : "EMPTY"}
+    </div>
+  );
+};
 
-export default ContactList
+export default ContactList;

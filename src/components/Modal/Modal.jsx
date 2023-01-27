@@ -2,7 +2,7 @@ import React from 'react'
 
 const Modal = ({children,isOpen,setIsOpen,handleCloseModal}) => {
   return (
-	<div className={`${isOpen?" z-50 block fixed inset-0 bg-red-500 transition":"hidden"}`}>
+	<div className={`${isOpen?" z-50  block fixed inset-0 bg-red-500 transition":"hidden"}`}>
 	
 	{children}
 	
