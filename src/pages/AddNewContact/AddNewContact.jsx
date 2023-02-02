@@ -55,6 +55,7 @@ const AddNewContact = ({ allContacts, setAllContacts }) => {
           name:inputValue.name,
           phoneNumber:inputValue.phoneNumber,
           id:`${Math.random()}`.split('.')[1],
+          favorite: false,
         }
       ]
     })

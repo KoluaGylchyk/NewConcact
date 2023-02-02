@@ -23,19 +23,29 @@ const Contact = ({ allContacts, setAllContacts }) => {
   useEffect(() => {
     console.log("+");
     const NewContactItem = allContacts.find((item) => item.id == params.id);
+    if(NewContactItem == undefined){
+      navigate('/');
+      return
+    }
     setNewContact(NewContactItem);
+    setInputValues({
+      inputNameValue:NewContactItem.name,
+      inputPhoneValue:NewContactItem.phoneNumber,
+    })
   }, []);
 
-  const handleToggleModal = () => {
+  const handleOpenModal = () => {
     setIsOpen(true);
-    setInputValues({
-      inputNameValue: "",
-      inputPhoneValue: "",
-    });
+    
   };
 
   const handleCloseModal = () => {
     setIsOpen(false);
+    setInputValues({
+      inputNameValue:newContact.name,
+      inputPhoneValue:newContact.phoneNumber,
+    })
+    
   };
 
   const handleOnChange = (e) => {
@@ -108,11 +118,11 @@ const Contact = ({ allContacts, setAllContacts }) => {
         {newContact?.phoneNumber}
       </div>
       <div>
-        <MyButton onClick={handleToggleModal} title="Edit" />
+        <MyButton onClick={handleOpenModal} title="Edit" />
         <MyButton onClick={handleOpenConfirmModal} title="Delete" />
       </div>
       {isOpen ? (
-        <Modal isOpen={isOpen} setIsOpen={handleToggleModal}>
+        <Modal isOpen={isOpen} setIsOpen={handleOpenModal}>
           <div>
             <button
               className="border-2 p-2 border-yellow-100 rounded-lg shadow-lg"
